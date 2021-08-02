@@ -7,11 +7,15 @@ if (isset($_GET['success'])) {
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head>                                              <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>TimeTable Management System</title>
     <script type="text/javascript" src="assets/jsPDF/dist/jspdf.min.js"></script>
     <script type="text/javascript" src="assets/js/html2canvas.js"></script>
@@ -60,9 +64,15 @@ if (isset($_GET['success'])) {
                 <li><a href="generatetimetable.php">GENERATE TIMETABLE</a></li>
 
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+             <ul class="nav navbar-nav navbar-left">
                 <li><a href="index.php">LOGOUT</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span></a>
+       <ul class="dropdown-menu"></ul>
+      </li>
+     </ul>
 
         </div>
     </div>
@@ -339,7 +349,7 @@ if (isset($_GET['success'])) {
                     }
 
                     echo '</table>';
-                    $sign = "GENERATED VIA TIMETABLE MANAGEMENT SYSTEM, COMPUTER ENGINEERING DEPARTMENT, AMU.";
+                    $sign = "GENERATED VIA AUTOMATIC TIMETABLE GENERATOR, COMPUTER ENGINEERING DEPARTMENT, JNTUA.";
                     echo "<div style='margin-left: 10px' align='center'>" . "<br>" . $str . "<br></div>" .
                         "<div style='margin-left: 10px' align='center'>" . "<strong>" . $sign . "<br></strong></div>";
                 }
@@ -383,19 +393,65 @@ if (isset($_GET['success'])) {
 <!--<div id="footer">
     <!--  &copy 2014 yourdomain.com | All Rights Reserved |  <a href="http://binarytheme.com" style="color: #fff" target="_blank">Design by : binarytheme.com</a>
 -->
-<!-- FOOTER SECTION END-->
+ <!-- FOOTER SECTION END-->
 
-<!--  Jquery Core Script -->
-<script src="assets/js/jquery-1.10.2.js"></script>
-<!--  Core Bootstrap Script -->
-<script src="assets/js/bootstrap.js"></script>
-<!--  Flexslider Scripts -->
-<script src="assets/js/jquery.flexslider.js"></script>
-<!--  Scrolling Reveal Script -->
-<script src="assets/js/scrollReveal.js"></script>
-<!--  Scroll Scripts -->
-<script src="assets/js/jquery.easing.min.js"></script>
-<!--  Custom Scripts -->
-<script src="assets/js/custom.js"></script>
+<script>
+$(document).ready(function(){
+ 
+ function load_unseen_notification(view = '')
+ {
+  $.ajax({
+   url:"fetch.php",
+   method:"POST",
+   data:{view:view},
+   dataType:"json",
+   success:function(data)
+   {
+    $('.dropdown-menu').html(data.notification);
+    if(data.unseen_notification > 0)
+    {
+     $('.count').html(data.unseen_notification);
+    }
+   }
+  });
+ }
+ 
+ load_unseen_notification();
+ 
+ $('#comment_form').on('submit', function(event){
+  event.preventDefault();
+  if($('#subject').val() != '' && $('#comment').val() != '')
+  {
+   var form_data = $(this).serialize();
+   $.ajax({
+    url:"insert.php",
+    method:"POST",
+    data:form_data,
+    success:function(data)
+    {
+     $('#comment_form')[0].reset();
+     load_unseen_notification();
+    }
+   });
+  }
+  else
+  {
+   alert("Both Fields are Required");
+  }
+ });
+ 
+ $(document).on('click', '.dropdown-toggle', function(){
+  $('.count').html('');
+  load_unseen_notification('yes');
+ });
+ 
+ setInterval(function(){ 
+  load_unseen_notification();; 
+ }, 5000);
+ 
+});
+</script>
+
+ 
 </body>
 </html>

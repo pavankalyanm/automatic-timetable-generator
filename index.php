@@ -6,11 +6,15 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head>                                              <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>TimeTable Management System</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet"/>
@@ -187,18 +191,7 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
 </script>
 
 
-<!--  Jquery Core Script -->
-<script src="assets/js/jquery-1.10.2.js"></script>
-<!--  Core Bootstrap Script -->
-<script src="assets/js/bootstrap.js"></script>
-<!--  Flexslider Scripts -->
-<script src="assets/js/jquery.flexslider.js"></script>
-<!--  Scrolling Reveal Script -->
-<script src="assets/js/scrollReveal.js"></script>
-<!--  Scroll Scripts -->
-<script src="assets/js/jquery.easing.min.js"></script>
-<!--  Custom Scripts -->
-<script src="assets/js/custom.js"></script>
+ 
 </div>
 </body>
 </html>

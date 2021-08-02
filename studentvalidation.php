@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head>                                              <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>TimeTable Management System</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
     <script type="text/javascript" src="assets/jsPDF/dist/jspdf.min.js"></script>
@@ -132,7 +136,7 @@
                 </tr>\n";
                 }
                 echo '</table>';
-                $sign = "GENERATED VIA TIMETABLE MANAGEMENT SYSTEM, COMPUTER ENGINEERING DEPARTMENT, AMU.";
+                $sign = "GENERATED VIA AUTOMATIC TIMETABLE GENERATOR, COMPUTER ENGINEERING DEPARTMENT, JNTUA.";
                 if (isset($_POST['select_semester'])) {
                     echo "<div align=\"center\">" . "<br>" . $str . "<br>
                             <strong>" . $sign . "<br></strong></div>";
