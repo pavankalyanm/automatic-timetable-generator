@@ -12,9 +12,9 @@ $days = array("monday", "tuesday", "wednesday", "thursday", "friday", "saturday"
 $day = $days[($class - 8) / 8];
 $periods = array("period1", "period2", "period3", "period4", "period5", "period6");
 $period = $periods[($class - 1) % 8];
-$q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT * FROM teachers ");
+$q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT * FROM teachers ");
 while ($row = mysqli_fetch_assoc($q)) {
-    $query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT * FROM " . $row['faculty_number'] . " WHERE day = '$day'");
+    $query = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT * FROM " . $row['faculty_number'] . " WHERE day = '$day'");
     $r = mysqli_fetch_assoc($query);
     if ($r[$period] == "-<br>-" || $r[$period] == "-<br>" || $r[$period] == "-") {
         $str .= " \"<option value=\"{$row['faculty_number']}\">{$row['name']}</option>\"";

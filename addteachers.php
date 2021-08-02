@@ -109,7 +109,7 @@
                 if ($facno == "" || $facno == "Faculty No.") {
                     continue;
                 }
-                $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+                $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                     "INSERT INTO teachers VALUES ('$facno','$name','$alias','$designation','$contact','$email')");
                 if ($q) {
                     $sql = "CREATE TABLE " . $facno . " (
@@ -121,12 +121,12 @@
                 period5 VARCHAR(30),
                 period6 VARCHAR(30)
                 )";
-                    mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), $sql);
+                    mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), $sql);
                     $days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
                     for ($i = 0; $i < 6; $i++) {
                         $day = $days[$i];
                         $sql = "INSERT into " . $facno . " VALUES('$day','','','','','','')";
-                        mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), $sql);
+                        mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), $sql);
                     }
                 }
             }
@@ -296,7 +296,7 @@
         <tbody>
         <?php
         include 'connection.php';
-        $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+        $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
             "SELECT * FROM teachers ORDER BY faculty_number ASC");
 
         while ($row = mysqli_fetch_assoc($q)) {

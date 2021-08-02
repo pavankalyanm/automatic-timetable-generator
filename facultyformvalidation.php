@@ -12,7 +12,7 @@ if (isset($_POST['FN'])) {
 } else {
     die();
 }
-$q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT name FROM teachers WHERE faculty_number = '$fac'");
+$q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT name FROM teachers WHERE faculty_number = '$fac'");
 if (mysqli_num_rows($q) == 1) {
     $row = mysqli_fetch_assoc($q);
     $_SESSION['loggedin_name'] = $row['name'];

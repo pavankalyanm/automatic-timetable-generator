@@ -19,7 +19,7 @@ if (isset($_POST['SN']) && isset($_POST['SC']) && isset($_POST['SS']) && isset($
     echo "<script type='text/javascript'>alert('$message');</script>";
     die();
 }
-$q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "INSERT INTO subjects VALUES ('$code','$name','$course','$sem','$dept',0,'','','')");
+$q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "INSERT INTO subjects VALUES ('$code','$name','$course','$sem','$dept',0,'','','')");
 if ($q) {
     $message = "Subject added.";
     echo "<script type='text/javascript'>alert('$message');</script>";

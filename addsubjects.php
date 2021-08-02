@@ -93,7 +93,7 @@
                 if ($code == "" || $code == "Subject Code") {
                     continue;
                 }
-                $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+                $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                     "INSERT INTO subjects VALUES ('$code','$name','$type','$semester','$department',0,'','','')");
             }
         }
@@ -267,7 +267,7 @@
         </tr>
         <?php
         include 'connection.php';
-        $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+        $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
             "SELECT * FROM subjects ORDER BY subject_code ASC ");
         while ($row = mysqli_fetch_assoc($q)) {
             echo "<tr><td>{$row['subject_code']}</td>

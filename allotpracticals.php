@@ -81,7 +81,7 @@
         <select name="tobealloted" class="list-group-item">
             <?php
             include 'connection.php';
-            $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+            $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                 "SELECT * FROM subjects WHERE course_type = 'LAB'");
             $row_count = mysqli_num_rows($q);
             if ($row_count) {
@@ -103,7 +103,7 @@
             <?php
             include 'connection.php';
 
-            $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+            $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                 "SELECT * FROM teachers ");
             $row_count = mysqli_num_rows($q);
             if ($row_count) {
@@ -123,7 +123,7 @@
             <?php
             include 'connection.php';
 
-            $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+            $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                 "SELECT * FROM teachers ");
             $row_count = mysqli_num_rows($q);
             if ($row_count) {
@@ -143,7 +143,7 @@
             <?php
             include 'connection.php';
 
-            $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+            $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                 "SELECT * FROM teachers ");
             $row_count = mysqli_num_rows($q);
             if ($row_count) {
@@ -174,7 +174,7 @@
 include 'connection.php';
 if (isset($_GET['name'])) {
     $id = $_GET['name'];
-    $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+    $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
         "UPDATE subjects  SET isAlloted = '0' , allotedto = '',allotedto2 = '',allotedto3 = '' WHERE subject_code = '$id' ");
 
 }
@@ -243,7 +243,7 @@ if (isset($_GET['name'])) {
     <tbody>
     <?php
     include 'connection.php';
-    $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+    $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
         "SELECT * FROM subjects");
 
     while ($row = mysqli_fetch_assoc($q)) {
@@ -254,13 +254,13 @@ if (isset($_GET['name'])) {
         $teacher_id1 = $row['allotedto'];
         $teacher_id2 = $row['allotedto2'];
         $teacher_id3 = $row['allotedto3'];
-        $t1 = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+        $t1 = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
             "SELECT name FROM teachers WHERE faculty_number = '$teacher_id1'");
         $trow1 = mysqli_fetch_assoc($t1);
-        $t2 = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+        $t2 = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
             "SELECT name FROM teachers WHERE faculty_number = '$teacher_id2'");
         $trow2 = mysqli_fetch_assoc($t2);
-        $t3 = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+        $t3 = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
             "SELECT name FROM teachers WHERE faculty_number = '$teacher_id3'");
         $trow3 = mysqli_fetch_assoc($t3);
         echo "<tr><td>{$row['subject_code']}</td>

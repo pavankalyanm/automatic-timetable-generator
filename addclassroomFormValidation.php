@@ -15,7 +15,7 @@ if (isset($_POST['CN'])) {
     echo "<script type='text/javascript'>alert('$message');</script>";
     die();
 }
-$q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "INSERT INTO classrooms VALUES ('$name',0)");
+$q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "INSERT INTO classrooms VALUES ('$name',0)");
 if ($q) {
     $message = "Classroom added.";
     echo "<script type='text/javascript'>alert('$message');</script>";

@@ -56,7 +56,7 @@
                 if (isset($_POST['select_semester'])) {
                     echo "COMPUTER ENGINEERING DEPARTMENT SEMESTER " . $_POST['select_semester'] . " ";
                     $year = (int)($_POST['select_semester'] / 2) + $_POST['select_semester'] % 2;
-                    $r = mysqli_fetch_assoc(mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT * from classrooms
+                    $r = mysqli_fetch_assoc(mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT * from classrooms
                                 WHERE status = '$year'"));
                     echo " ( " . $r['name'], " ) ";
                 }
@@ -81,9 +81,9 @@
             } else
                 echo '</table>';
             if (isset($_POST['select_semester']) && $_POST['select_semester'] % 2 !== 0) {
-                $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+                $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                     "SELECT * FROM" . $table);
-                $qq = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+                $qq = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                     "SELECT * FROM subjects");
                 $days = array('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY');
                 $i = -1;
@@ -94,7 +94,7 @@
                             $str .= $r['subject_code'] . ": " . $r['subject_name'] . " ";
                             if (isset($r['allotedto'])) {
                                 $id = $r['allotedto'];
-                                $qqq = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+                                $qqq = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                                     "SELECT * FROM teachers WHERE faculty_number = '$id'");
                                 $rr = mysqli_fetch_assoc($qqq);
                                 $str .= " " . $rr['alias'] . ": " . $rr['name'] . " ";
@@ -107,14 +107,14 @@
                             }
                             if (isset($r['allotedto2'])) {
                                 $id = $r['allotedto2'];
-                                $qqq = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+                                $qqq = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                                     "SELECT * FROM teachers WHERE faculty_number = '$id'");
                                 $rr = mysqli_fetch_assoc($qqq);
                                 $str .= " " . $rr['alias'] . ": " . $rr['name'] . ", ";
                             }
                             if (isset($r['allotedto3'])) {
                                 $id = $r['allotedto3'];
-                                $qqq = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+                                $qqq = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                                     "SELECT * FROM teachers WHERE faculty_number = '$id'");
                                 $rr = mysqli_fetch_assoc($qqq);
                                 $str .= " " . $rr['alias'] . ": " . $rr['name'] . "<br>";

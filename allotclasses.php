@@ -82,7 +82,7 @@ if (isset($_POST['in_class'])) {
     include 'connection.php';
     $year = $_POST['course'];
     $class = $_POST['in_class'];
-    $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+    $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
         "UPDATE classrooms SET status = '$year' WHERE name = '$class'");
 }
 ?>
@@ -102,7 +102,7 @@ if (isset($_POST['in_class'])) {
         <select name="in_class" class="list-group-item">
             <?php
             include 'connection.php';
-            $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+            $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
                 "SELECT * FROM classrooms");
             $row_count = mysqli_num_rows($q);
             if ($row_count) {
@@ -180,7 +180,7 @@ if (isset($_POST['in_class'])) {
         <tbody>
         <?php
         include 'connection.php';
-        $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
+        $q = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"),
             "SELECT * FROM classrooms ");
         $courses = array('B.Tech 2nd Year', 'B.Tech 3rd Year', 'B.Tech 4rth Year');
         while ($row = mysqli_fetch_assoc($q)) {

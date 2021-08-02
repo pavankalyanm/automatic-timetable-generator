@@ -19,15 +19,15 @@ $day = $days[($class - 8) / 8];
 
 $periods = array("period1", "period2", "period3", "period4", "period5", "period6");
 $period = $periods[($class - 1) % 8];
-$query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT * FROM teachers WHERE faculty_number = '$whose'");
+$query = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT * FROM teachers WHERE faculty_number = '$whose'");
 $row = mysqli_fetch_assoc($query);
 $whose_name = $row['name'];
-$query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT * FROM teachers WHERE faculty_number = '$sub'");
+$query = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT * FROM teachers WHERE faculty_number = '$sub'");
 $row = mysqli_fetch_assoc($query);
 $sub_name = $row['name'];
 $whose = strtolower($whose);
 $sub = strtolower($sub);
-$query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT * FROM $sub WHERE day = '$day'");
+$query = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT * FROM $sub WHERE day = '$day'");
 $row = mysqli_fetch_assoc($query);
 
 $available = false;
@@ -38,7 +38,7 @@ if ($row[$period] == "-<br>-" || $row[$period] == "-<br>" || $row[$period] == "-
         window.location.href = 'generatetimetable.php?display='$whose;</script>";
 }
 
-$query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), "SELECT * FROM $whose WHERE day = '$day'");
+$query = mysqli_query(mysqli_connect("eu-cdbr-west-01.cleardb.com", "b315615e71a772", "0a9c415c", "heroku_b211df1ac2bee44"), "SELECT * FROM $whose WHERE day = '$day'");
 $row = mysqli_fetch_assoc($query);
 $pieces = explode("<br>", $row[$period]);
 /*echo $pieces[0]; // piece1
